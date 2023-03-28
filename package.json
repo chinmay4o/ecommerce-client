@@ -1,6 +1,6 @@
 {
   "name": "ecom-mern",
-  "proxy": "http://127.0.0.1:5007",
+  "proxy": "http://65.0.77.66",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
