@@ -14,11 +14,12 @@ const LoginScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation().search;
-
+  console.log(location, "location");
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, userInfo } = userLogin;
 
   const redirect = location ? location.split("=")[1] : "/";
+  console.log(redirect, "redirect = location");
   // const redirect = "/";
 
   const submitHandler = (e) => {
@@ -29,7 +30,11 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate(redirect);
+      if (redirect === "/") {
+        navigate(`/`);
+      } else {
+        navigate(`/${redirect}`);
+      }
     }
   }, [navigate, userInfo, redirect]);
 

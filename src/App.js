@@ -18,9 +18,9 @@ const App = () => {
   return (
     <>
       <Header />
-      <Routes>
-        <main className="py-3">
-          <Container>
+      <main className="py-3">
+        <Container>
+          <Routes>
             {/* <Route exact path="/">
               <h1>Welcome to ProShop</h1>
               <HomeScreen />
@@ -43,10 +43,10 @@ const App = () => {
             <Route path="/placeorder" element={<PlaceOrderScreen />} />
 
             <Route path="/order/:id" element={<OrderScreen />} />
-          </Container>
-        </main>
-        <Footer />
-      </Routes>
+          </Routes>
+          <Footer />
+        </Container>
+      </main>
     </>
   );
 };
