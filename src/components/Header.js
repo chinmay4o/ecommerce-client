@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +9,7 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const userDetails = useSelector(state => state.userDetails);
 
@@ -45,7 +45,7 @@ const Header = () => {
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
                 {/* <NavDropdown title={userDD.name} id="basic-nav-dropdown"> */}
-                  <NavDropdown.Item onClick={() => history.push("/profile")}>Profile</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => navigate.push("/profile")}>Profile</NavDropdown.Item>
 
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout

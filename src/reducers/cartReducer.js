@@ -27,7 +27,7 @@ export const cartReducer = (state = { cartItems: [], shippingAddress : {}}, acti
           cartItems: [...state.cartItems, item],
         };
       }
-
+ 
     case CART_REMOVE_ITEM:
       return {
         ...state,

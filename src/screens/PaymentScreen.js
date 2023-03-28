@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FromContainer";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { savePaymentMethod } from "../actions/cartActions.js";
 
@@ -11,10 +11,10 @@ const PaymentScreen = () => {
   const { shippingAddress } = cart;
 
   if (!shippingAddress) {
-    history.push("./shipping");
+    navigate("./shipping");
   }
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ const PaymentScreen = () => {
     e.preventDefault();
 
     dispatch(savePaymentMethod(paymentMethod));
-    history.push("/placeorder");
+    navigate("/placeorder");
   };
 
   return (

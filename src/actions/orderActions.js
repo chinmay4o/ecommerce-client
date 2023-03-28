@@ -5,6 +5,9 @@ import {
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
   ORDER_DETAILS_FAIL,
+  ORDER_PAY_REQUEST,
+  ORDER_PAY_SUCCESS,
+  ORDER_PAY_FAIL,
 } from "../constants/orderConstants.js";
 
 
@@ -65,6 +68,41 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ORDER_DETAILS_FAIL,
+      payload: error.message,
+    });
+  }
+};
+
+
+export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ORDER_PAY_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const response = await fetch(`/api/orders/${id}/pay`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `bearer ${userInfo.token}`,
+      },
+      body: JSON.stringify(paymentResult) 
+    }
+    );
+
+    const data = await response.json();
+
+    if (data.message) {
+      throw new Error(data.message);
+    }
+
+    dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
+    //   dispatch({ type: USER_PAY_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: ORDER_PAY_FAIL,
       payload: error.message,
     });
   }

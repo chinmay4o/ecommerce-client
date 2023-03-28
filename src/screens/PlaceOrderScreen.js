@@ -11,13 +11,13 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import FormContainer from "../components/FromContainer";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { saveShippingAddress } from "../actions/cartActions.js";
 import {createOrder} from "../actions/orderActions.js"
 
 const PlaceOrderScreen = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
@@ -64,12 +64,12 @@ const PlaceOrderScreen = () => {
   // useEffect
   useEffect(() => {
     if (success) {
-      history.push(`/order/${order._id}`);
+      navigate(`/order/${order._id}`);
       // dispatch({ type: USER_DETAILS_RESET })
       // dispatch({ type: ORDER_CREATE_RESET })
     }
     // eslint-disable-next-line
-  }, [history, success])
+  }, [navigate, success])
 
 
   return (

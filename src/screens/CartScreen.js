@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Message from "../components/Message";
-import { Link, useParams, useLocation, useHistory} from "react-router-dom";
+import { Link, useParams, useLocation, useNavigate} from "react-router-dom";
 import {
   Row,
   Col,
@@ -15,7 +15,7 @@ import { addToCart , removeFromCart} from "../actions/cartActions";
 
 const CartScreen = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const productId = useParams().id;
   const location = useLocation().search;
   const qty = location ? Number(location.split("=")[1]) : 1;
@@ -33,7 +33,7 @@ const CartScreen = () => {
 
   const checkoutHandler = () => {
     console.log("checkout");
-    history.push("/login?redirect=shipping");
+    navigate("/login?redirect=shipping");
   };
 
   useEffect(() => {

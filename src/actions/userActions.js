@@ -18,9 +18,8 @@ import {
   USER_UPDATE_RESET,
 } from "../constants/userConstants";
 
-
 // LOGIN ACTION
-export const login = (email, password) => async (dispatch, getState) => {
+export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
 
