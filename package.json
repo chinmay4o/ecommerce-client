@@ -1,6 +1,6 @@
 {
   "name": "ecom-mern",
-  "proxy": "http://65.0.77.66",
+  "proxy": "https://ecomserver.chinmay.space",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
