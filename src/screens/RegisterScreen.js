@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FromContainer";
-import { useHistory , Link} from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
 import Message from "../components/Message"
 import Loader from "../components/Loader"
 import {register} from "../actions/userActions.js"
@@ -16,7 +16,7 @@ const RegisterScreen = () => {
 
   const dispatch = useDispatch();
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const userRegister = useSelector((state) => state.userRegister);
 
@@ -26,7 +26,7 @@ const RegisterScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect);
+      navigate(redirect);
     }
   }, [userInfo]);
 

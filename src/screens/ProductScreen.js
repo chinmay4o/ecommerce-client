@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import products from "../products";
 import { Row, Col, Image, ListGroup, Card, Button, Form } from "react-bootstrap";
@@ -10,7 +10,7 @@ import { listProductDetails } from "../actions/productActions";
 
 const ProductScreen = () => {
   // const product = products.find((p) => p._id === id);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [qty, setQty] = useState(1);
 
   const { id } = useParams();
@@ -21,9 +21,9 @@ const ProductScreen = () => {
   const { loading, product, error } = productDetails;
 
   const addToCartHandler = (e) => {
-      history.push(`/cart/${id}?qty=${qty}`);
+      navigate(`/cart/${id}?qty=${qty}`);
   }
-
+ 
   useEffect(() => {
     dispatch(listProductDetails(id));
   }, [dispatch]);

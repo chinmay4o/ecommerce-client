@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FromContainer";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { getUserDetails, updateUserProfile } from "../actions/userActions.js";
@@ -16,7 +16,7 @@ const ProfileScreen = () => {
 
   const dispatch = useDispatch();
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, userDD, error } = userDetails;
@@ -32,7 +32,7 @@ const ProfileScreen = () => {
   // USEEFFECT
   useEffect(() => {
     if (!userInfo) {
-      history.push("/login");
+      navigate("/login");
     } else {
       if (!userDD) {
         dispatch(getUserDetails("profile"));
@@ -41,7 +41,7 @@ const ProfileScreen = () => {
         setEmail(userDD.email);
       }
     }
-  }, [userInfo, dispatch, history, userDD, success]);
+  }, [userInfo, dispatch, navigate, userDD, success]);
 
   // SUBMIT HANDLER
   const submitHandler = (e) => {
