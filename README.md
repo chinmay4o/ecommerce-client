@@ -10,7 +10,8 @@ Flicker Shop is ecom store:
 
 # Application Links
 
-Frontend Code -> [https://github.com/chinmay4o/ecommerce-client/](https://github.com/chinmay4o/ecommerce-client/)
+Frontend -> [https://github.com/chinmay4o/ecommerce-client/](https://github.com/chinmay4o/ecommerce-client/)
+Backend  -> [https://github.com/chinmay4o/ecommerce-server/](https://github.com/chinmay4o/ecommerce-server)
 <br>
 
 # Tech Stack
